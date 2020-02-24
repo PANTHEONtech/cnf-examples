@@ -1,0 +1,59 @@
+---
+# DHCP configuration
+apiVersion: pantheon.tech/v1
+kind: CNFConfiguration
+metadata:
+  name: curl-client
+spec:
+  microservice: curl-client
+  configItems:
+    - module: cnf.nsm
+      version: v1
+      type: client
+      data: |-
+        name: access-to-webserver-via-nat
+        network_service: cnf-nat-example
+        outgoing_labels:
+          - key: app
+            value: curl-client
+        interface_name: cnf-example
+        interface_type: KERNEL_INTERFACE
+        ipAddresses:
+          - "192.168.100.10/24"
+    - module: linux.l3
+      type: route
+      data: |-
+        outgoing_interface: cnf-example
+        scope: GLOBAL
+        dst_network: 80.80.80.100/30
+        gw_addr: 192.168.100.1
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curl-client
+  labels:
+    cnf: curl-client
+spec:
+  containers:
+    - name: curl-client
+      image: pantheontech/nsm-agent-linux:v3.0.0
+      imagePullPolicy: IfNotPresent
+      securityContext:
+        privileged: true
+      env:
+        - name: ETCD_CONFIG
+          value: "/etc/etcd/etcd.conf"
+        - name: MICROSERVICE_LABEL
+          value: "curl-client"
+      resources:
+        limits:
+          networkservicemesh.io/socket: 1
+      volumeMounts:
+        - name: etcd-cfg
+          mountPath: /etc/etcd
+  volumes:
+    - name: etcd-cfg
+      configMap:
+        name: cnf-etcd-cfg
