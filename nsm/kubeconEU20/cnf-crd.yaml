@@ -66,7 +66,7 @@ spec:
           until nc -w 2 $HOST_IP:31379; do echo waiting for etcd; sleep 2; done;
   containers:
     - name: cnf-crd
-      image: cnf-nsm-docker.pantheon.tech/cnf-crd:latest
+      image: pantheontech/cnf-crd:latest
       imagePullPolicy: IfNotPresent
       env:
         - name: ETCD_CONFIG
