@@ -10,7 +10,6 @@ spec:
       version: v1
       type: endpoint
       data: |-
-        name: access-to-webserver-client
         network_service: cnf-nat-example
         advertised_labels:
           - key: app
@@ -31,7 +30,7 @@ metadata:
 spec:
   containers:
     - name: vpp-webserver
-      image: pantheontech/nsm-agent-vpp:v3.0.0
+      image: pantheontech/nsm-agent-vpp:v3.1.0
       env:
         - name: ETCD_CONFIG
           value: "/etc/etcd/etcd.conf"

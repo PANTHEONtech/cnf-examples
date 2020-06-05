@@ -38,7 +38,7 @@ metadata:
 spec:
   containers:
     - name: curl-client
-      image: pantheontech/nsm-agent-linux:v3.0.0
+      image: pantheontech/nsm-agent-linux:v3.1.0
       imagePullPolicy: IfNotPresent
       securityContext:
         privileged: true

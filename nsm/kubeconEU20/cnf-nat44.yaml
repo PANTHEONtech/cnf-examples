@@ -38,12 +38,10 @@ spec:
         interface_type: MEM_INTERFACE
         ipAddresses:
           - "80.80.80.102/30"
-
     - module: cnf.nsm
       version: v1
       type: endpoint
       data: |-
-        name: access-for-clients
         network_service: cnf-nat-example
         advertised_labels:
           - key: app
@@ -65,7 +63,7 @@ metadata:
 spec:
   containers:
     - name: cnf-nat44
-      image: pantheontech/nsm-agent-vpp:v3.0.0
+      image: pantheontech/nsm-agent-vpp:v3.1.0
       imagePullPolicy: IfNotPresent
       securityContext:
         privileged: true
