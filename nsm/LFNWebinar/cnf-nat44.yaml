@@ -3,41 +3,10 @@
 apiVersion: pantheon.tech/v1
 kind: CNFConfiguration
 metadata:
-  name: cnf-nat44-config
+  name: cnf-nat44
 spec:
   microservice: cnf-nat44
   configItems:
-    - module: vpp.nat
-      type: nat44-interface
-      data: |-
-        name: gateway
-        nat_outside: true
-        output_feature: true
-
-    - module: vpp.nat
-      type: nat44-interface
-      data: |-
-        name: client0
-        nat_inside: true
-
-    - module: vpp.nat
-      type: nat44-pool
-      data: |-
-        first_ip: 80.80.80.102
-
-    - module: cnf.nsm
-      version: v1
-      type: client
-      data: |-
-        name: access-to-webserver
-        network_service: cnf-nat-example
-        outgoing_labels:
-          - key: app
-            value: nat44
-        interface_name: gateway
-        interface_type: MEM_INTERFACE
-        ipAddresses:
-          - "80.80.80.102/30"
     - module: cnf.nsm
       version: v1
       type: endpoint
@@ -46,11 +15,44 @@ spec:
         advertised_labels:
           - key: app
             value: nat44
-        single_client: true
-        interface_name_prefix: client
+        interface_name_prefix: memif  # full name: memif0
         interface_type: MEM_INTERFACE
+        single_client: true
         ipAddresses:
           - "192.168.100.1/24"
+
+    - module: cnf.nsm
+      version: v1
+      type: client
+      data: |-
+        name: access-to-external-network
+        network_service: cnf-nat-example
+        outgoing_labels:
+          - key: app
+            value: nat44
+        interface_name: memif1
+        interface_type: MEM_INTERFACE
+        ipAddresses:
+          - "80.80.80.100/24"
+
+    - module: vpp.nat
+      type: nat44-interface
+      data: |-
+        name: memif1
+        nat_outside: true
+        output_feature: true
+
+    - module: vpp.nat
+      type: nat44-interface
+      data: |-
+        name: memif0
+        nat_inside: true
+
+    - module: vpp.nat
+      type: nat44-pool
+      data: |-
+        first_ip: 80.80.80.100
+        last_ip: 80.80.80.105
 
 ---
 # CNF-NAT44 pod definition

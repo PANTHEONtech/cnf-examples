@@ -80,7 +80,7 @@ spec:
         name: cnf-etcd-cfg
 
 ---
-# etcd config used by pods in the host network namespace
+# etcd config used by CNFs deployed in the host network namespace
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -141,12 +141,3 @@ spec:
         - -c
         - /usr/local/bin/etcd --name=cnf-etcd --data-dir=/var/cnf-etcd/data
           --advertise-client-urls=http://0.0.0.0:12379 --listen-client-urls=http://0.0.0.0:12379 --listen-peer-urls=http://0.0.0.0:12380
-      volumeMounts:
-        - name: cnf-etcd-vol
-          mountPath: /var/cnf-etcd/
-  volumes:
-    - name: cnf-etcd-vol
-      hostPath:
-        path: /var/cnf-etcd/
-
-
