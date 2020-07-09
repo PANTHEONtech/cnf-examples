@@ -5,7 +5,8 @@ The repository provides reference code and test cases for running networking cod
 the [Ligato framework][ligato] and emerging cloud native technologies such as [NSM][nsm], with primary focus
 on the Telecom domain.
 
-*Example presented in KubeCon Europe 2020 can be found inside the `nsm/kubeconEU20` sub-directory.*
+*Example presented in the LFN Webinar "Building CNFs with FD.io VPP and Network Service Mesh..." can be found inside
+the `nsm/LFNWebinar` sub-directory.*
 
 More information about cloud-native tools and network functions provided by PANTHEON.tech can be found on our website
 [cdnf.io][cdnf-io].

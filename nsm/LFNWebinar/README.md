@@ -1,5 +1,5 @@
-CNF chaining using Ligato and NSM (example for Kubecon Europe 2020)
-===================================================================
+CNF chaining using Ligato and NSM (example for LFN Webinar)
+===========================================================
 
 Overview
 --------
@@ -17,11 +17,9 @@ installed (as opposed to being an external endpoint as it would be in a real-wor
 the minimalistic [TestHTTPServer][vpp-test-http-server] implemented in VPP is utilized.
 
 In all the three Pods an instance of NSM Agent is run to communicate with the NSM manager via NSM SDK and negotiate
-additional network connections to connect the pods into a chain `client <-> NAT-CNF <-> web-server` (see diagram below).
+additional network connections to connect the pods into a chain `client <-> NAT-CNF <-> web-server` (see diagrams below).
 The agents then use the features of Ligato framework to further configure Linux and VPP networking around the additional
 interfaces provided by NSM (e.g. routes, NAT).
-
-![diagram][diagram] 
 
 The configuration to apply is described declaratively and submitted to NSM agents in a Kubernetes native way through
 our own Custom Resource called `CNFConfiguration`. The controller for this CRD (installed by [cnf-crd.yaml][cnf-crd-yaml])
@@ -30,6 +28,14 @@ For example, the configuration for the NSM agent managing the central NAT CNF ca
 
 More information about cloud-native tools and network functions provided by PANTHEON.tech can be found on our website
 [cdnf.io][cdnf-io].
+
+### Networking Diagram
+
+![networking][networking]
+
+### Routing Diagram
+
+![routing][routing]
 
 Demo steps
 ----------
@@ -50,17 +56,15 @@ Demo steps
     ```  
 6. Deploy etcd + controller for CRD, both of which will be used together to pass configuration to NSM agents:
     ```
-    $ kubectl apply -f  cnf-crd.yaml   
+    $ kubectl apply -f cnf-crd.yaml
     ```
 7. Submit definition of the network topology for this example to NSM:
     ```
-    $ kubectl apply -f  network-service.yaml
+    $ kubectl apply -f network-service.yaml
     ```
 8. Deploy and start simple VPP-based webserver with NSM-Agent-VPP as control-plane:
     ```
     $ kubectl apply -f webserver.yaml
-    # Wait for the Pod to start...
-    $ kubectl exec -it vpp-webserver vppctl test http server   
     ```
 9. Deploy VPP-based NAT44 CNF with NSM-Agent-VPP as control-plane:
     ```
@@ -68,11 +72,11 @@ Demo steps
     ```
 10. Deploy Pod with NSM-Agent-Linux control-plane and curl for testing connection to the webserver through NAT44 CNF:
     ```
-    $ kubectl apply -f client.yaml 
+    $ kubectl apply -f client.yaml
     ```
 11. Test connectivity between client and webserver:
     ```
-    $ kubectl exec -it  curl-client curl 80.80.80.101/show/version
+    $ kubectl exec -it  client curl 80.80.80.80/show/version
 
     <html><head><title>show version</title></head><link rel="icon" href="data:,"><body><pre>vpp v20.01-rc2~11-gfce396738~b17 built by root on b81dced13911 at 2020-01-29T21:07:15
     </pre></body></html>
@@ -80,25 +84,25 @@ Demo steps
 12. To confirm that client's IP is indeed source NATed (from `192.168.100.10` to `80.80.80.102`) before reaching
     the webserver, one can use the VPP packet tracing:
     ```
-    $ kubectl exec -it vpp-webserver vppctl trace add memif-input 10
-    $ kubectl exec -it curl-client curl 80.80.80.101/show/version
-    $ kubectl exec -it vpp-webserver vppctl show trace
+    $ kubectl exec -it webserver vppctl trace add memif-input 10
+    $ kubectl exec -it client curl 80.80.80.80/show/version
+    $ kubectl exec -it webserver vppctl show trace
 
-    00:12:50:342786: memif-input
+    00:01:04:655507: memif-input
       memif: hw_if_index 1 next-index 4
         slot: ring 0
-    00:12:50:342795: ethernet-input
-      frame: flags 0x1, hw-if-index 1, sw-if-index 1
-      IP4: 02:fe:a6:c0:ad:51 -> 02:fe:6c:37:c4:3c
-    00:12:50:342798: ip4-input
-      TCP: 80.80.80.102 -> 80.80.80.101
+    00:01:04:655515: ethernet-input
+      IP4: 02:fe:68:a6:6b:8c -> 02:fe:b8:e1:c8:ad
+    00:01:04:655519: ip4-input
+      TCP: 80.80.80.100 -> 80.80.80.80
     ...
     ```
 
 [ligato]: https://ligato.io/
 [nsm]: https://networkservicemesh.io/
 [install-helm]: https://helm.sh/docs/intro/install/
-[diagram]: img/kubecon20-example.png
+[networking]: img/lfn-webinar-networking.png
+[routing]: img/lfn-webinar-routing.png
 [cdnf-io]: https://cdnf.io/
 [vpp-nat-plugin]: https://wiki.fd.io/view/VPP/NAT
 [curl]: https://curl.haxx.se/
