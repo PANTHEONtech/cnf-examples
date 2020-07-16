@@ -22,22 +22,19 @@ Requirements:
 
 ### VPP [FD.io]
 
-- Version v20.09 and commit 'a5cf6e077' was used for this demo.
-   ```
-   a5cf6e077 build: add libssl-dev library for ubuntu 20.04
-   ```
-- Clone VPP.
+- Clone VPP with eBPF tracing support
    ```
    git clone "https://gerrit.fd.io/r/vpp"
+   git review -d 27945
    ```
-- Checkout commit ```a5cf6e077```.
-
-- In case of any other build, please update probes to make compile-able if necessary.
-
 Build:
 --------------
 ### build with USDT probes
 
+- Install SystemTap
+   ```
+   apt-get install systemtap-sdt-dev
+   ```
 - Annotated code using SystemTap macros from patch 
    ```
    vpp-traceability.diff
