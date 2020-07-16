@@ -27,7 +27,6 @@ Requirements:
    git clone "https://gerrit.fd.io/r/vpp"
    git review -d 27945
    ```
-
 Build:
 --------------
 ### build with USDT probes
