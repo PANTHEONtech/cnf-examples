@@ -1,1 +1,5 @@
 .idea
+.iml
+/ONAP-cdnf-integration/*.zip
+/ONAP-cdnf-integration/reports/
+/ONAP-cdnf-integration/cba/target/

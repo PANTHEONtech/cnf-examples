@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "template_author": "Filip Gschwandtner",
+    "author-email": "filip.gschwandtner@pantheon.tech",
+    "template_name": "Firewall-CNF-configuration-example",
+    "template_version": "1.0.0",
+    "template_tags": "CBA,Firewall,CNF,demo,Pantheon.tech"
+  },
+  "topology_template": {
+    "workflows": {
+      "apply-firewall-rule": {
+        "steps": {
+          "resolve-template-step" : {
+            "description" : "resolve firewall rule configuration template based on workflow input values",
+            "target" : "resolve-template",
+            "on_success": [
+              "deploy-config-step"
+            ]
+          },
+          "deploy-config-step": {
+            "description": "deploys firewall rule to Firewall CNF",
+            "target": "deploy-config"
+          }
+        },
+        "inputs": {
+          "cnf-rest-url": {
+            "required": true,
+            "type": "string"
+          },
+          "firewall_action": {
+            "required": true,
+            "type": "string"
+          },
+          "traffic_destination_network": {
+            "required": true,
+            "type": "string"
+          }
+        },
+        "outputs": {
+          "response-data": {
+            "type": "string",
+            "value": {
+              "get_attribute": [
+                "deploy-config",
+                "response-data"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "node_templates": {
+      "resolve-template" : {
+        "type" : "component-resource-resolution",
+        "interfaces" : {
+          "ResourceResolutionComponent" : {
+            "operations" : {
+              "process" : {
+                "inputs" : {
+                  "artifact-prefix-names" : [ "cnf-config" ],
+                  "store-result" : false
+                },
+                "outputs" : {
+                  "resource-assignment-params" : {
+                    "get_attribute" : [ "SELF", "assignment-params" ]
+                  },
+                  "status" : "success"
+                }
+              }
+            }
+          }
+        },
+        "artifacts" : {
+          "cnf-config-template" : {
+            "type" : "artifact-template-velocity",
+            "file" : "Templates/cnf-config-template.vtl"
+          },
+          "cnf-config-mapping" : {
+            "type" : "artifact-mapping-resource",
+            "file" : "Templates/cnf-config-mapping.json"
+          }
+        }
+      },
+      "deploy-config" : {
+        "type" : "component-script-executor",
+        "interfaces" : {
+          "ComponentScriptExecutor" : {
+            "operations" : {
+              "process" : {
+                "inputs" : {
+                  "script-type" : "kotlin",
+                  "script-class-reference" : "org.onap.ccsdk.cds.blueprintsprocessor.services.execution.scripts.ConfigDeploy",
+                  "instance-dependencies" : [ ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

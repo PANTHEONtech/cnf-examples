@@ -1,0 +1,14 @@
+netallocConfig: {}
+linuxConfig: {}
+vppConfig:
+    acls:
+    -   name: ICMPTrafficDemo
+        rules:
+        -   action: ${firewall_action}
+            ip_rule:
+                ip:
+                    destinationNetwork: ${traffic_destination_network}
+                    sourceNetwork: 0.0.0.0/0
+        interfaces:
+            egress:
+            - fromVPPAFPacket

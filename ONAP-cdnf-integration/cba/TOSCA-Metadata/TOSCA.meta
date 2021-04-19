@@ -1,0 +1,8 @@
+TOSCA-Meta-File-Version: 1.0.0
+CSAR-Version: 1.0
+Created-By: Filip Gschwandtner
+Entry-Definitions: Definitions/cnf-configuration.json
+Template-Tags: CBA, Firewall, CNF, demo, Pantheon.tech
+Template-Name: Firewall-CNF-configuration-example
+Template-Version: 1.0.0
+Template-Type: DEFAULT
