@@ -1,0 +1,38 @@
+[
+  {
+    "name": "traffic_destination_network",
+    "property": {
+      "description": "Destination network (IP+mask) for firewall rule applied to firewall CNF",
+      "required": true,
+      "type": "string",
+      "status": "",
+      "constraints": [{}],
+      "entry_schema": {
+        "type": ""
+      }
+    },
+    "input-param": true,
+    "dictionary-name": "address",
+    "dictionary-source": "input",
+    "dependencies": [],
+    "version": 0
+  },
+  {
+    "name": "firewall_action",
+    "property": {
+      "description": "Action that will be applied by firewall to network traffic (possible values: DENY, PERMIT)",
+      "required": true,
+      "type": "string",
+      "status": "",
+      "constraints": [{}],
+      "entry_schema": {
+        "type": ""
+      }
+    },
+    "input-param": true,
+    "dictionary-name": "address",
+    "dictionary-source": "input",
+    "dependencies": [],
+    "version": 0
+  }
+]

@@ -1,0 +1,974 @@
+{
+	"info": {
+		"_postman_id": "f99ad65b-3ad5-45f9-ba60-34e9016dc12a",
+		"name": "CDS-CNF demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Bootstrap",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ccsdkapps",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ccsdkapps",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "",
+						"type": "text",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"loadModelType\" : true,\r\n\"loadResourceDictionary\" : true,\r\n\"loadCBA\" : false\r\n}"
+				},
+				"url": {
+					"raw": "http://{{bp-ip}}:{{bp-port}}/api/v1/blueprint-model/bootstrap",
+					"protocol": "http",
+					"host": [
+						"{{bp-ip}}"
+					],
+					"port": "{{bp-port}}",
+					"path": [
+						"api",
+						"v1",
+						"blueprint-model",
+						"bootstrap"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CDS Bootstrap",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"loadModelType\" : false,\r\n\"loadResourceDictionary\" : true,\r\n\"loadCBA\" : false\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/blueprint-model/bootstrap",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"blueprint-model",
+								"bootstrap"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-ONAP-RequestID",
+							"value": "b73253b6-d2be-4701-bdb2-31fa66b79a01"
+						},
+						{
+							"key": "X-ONAP-InvocationID",
+							"value": "b1a59296-fcf2-4435-b8de-9a2e9b9f4077"
+						},
+						{
+							"key": "X-ONAP-PartnerName",
+							"value": "cds-controller"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1 ; mode=block"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get Blueprints",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ccsdkapps",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ccsdkapps",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"loadModelType\" : true,\r\n\"loadResourceDictionary\" : true,\r\n\"loadCBA\" : false\r\n}"
+				},
+				"url": {
+					"raw": "http://{{bp-ip}}:{{bp-port}}/api/v1/blueprint-model",
+					"protocol": "http",
+					"host": [
+						"{{bp-ip}}"
+					],
+					"port": "{{bp-port}}",
+					"path": [
+						"api",
+						"v1",
+						"blueprint-model"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CDS Bootstrap",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"loadModelType\" : false,\r\n\"loadResourceDictionary\" : true,\r\n\"loadCBA\" : false\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/blueprint-model/bootstrap",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"blueprint-model",
+								"bootstrap"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-ONAP-RequestID",
+							"value": "b73253b6-d2be-4701-bdb2-31fa66b79a01"
+						},
+						{
+							"key": "X-ONAP-InvocationID",
+							"value": "b1a59296-fcf2-4435-b8de-9a2e9b9f4077"
+						},
+						{
+							"key": "X-ONAP-PartnerName",
+							"value": "cds-controller"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1 ; mode=block"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Delete Blueprint Model",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ccsdkapps",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ccsdkapps",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"type": "text",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://{{bp-ip}}:{{bp-port}}/api/v1/blueprint-model/name/Firewall-CNF-configuration-example/version/1.0.0",
+					"protocol": "http",
+					"host": [
+						"{{bp-ip}}"
+					],
+					"port": "{{bp-port}}",
+					"path": [
+						"api",
+						"v1",
+						"blueprint-model",
+						"name",
+						"Firewall-CNF-configuration-example",
+						"version",
+						"1.0.0"
+					]
+				},
+				"description": "Delete a blueprint model identified by its name and version from CDS."
+			},
+			"response": [
+				{
+					"name": "CDS Bootstrap",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"loadModelType\" : false,\r\n\"loadResourceDictionary\" : true,\r\n\"loadCBA\" : false\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/blueprint-model/bootstrap",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"blueprint-model",
+								"bootstrap"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-ONAP-RequestID",
+							"value": "b73253b6-d2be-4701-bdb2-31fa66b79a01"
+						},
+						{
+							"key": "X-ONAP-InvocationID",
+							"value": "b1a59296-fcf2-4435-b8de-9a2e9b9f4077"
+						},
+						{
+							"key": "X-ONAP-PartnerName",
+							"value": "cds-controller"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1 ; mode=block"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Enrich Blueprint",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "ccsdkapps",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "ccsdkapps",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Accept-Encoding",
+						"type": "text",
+						"value": "gzip,deflate",
+						"disabled": true
+					},
+					{
+						"key": "Referer",
+						"type": "text",
+						"value": "http://84.39.39.116:30497/blueprint",
+						"disabled": true
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": "http://84.39.39.116:30497",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"contentType": "application/zip",
+							"type": "file",
+							"src": "/home/dev/data/projects/onap/cds-cnf-integration/cba.zip"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://{{bp-ip}}:{{bp-port}}/api/v1/blueprint-model/enrich",
+					"protocol": "http",
+					"host": [
+						"{{bp-ip}}"
+					],
+					"port": "{{bp-port}}",
+					"path": [
+						"api",
+						"v1",
+						"blueprint-model",
+						"enrich"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save Blueprint",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ccsdkapps",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ccsdkapps",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "",
+						"type": "text",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"contentType": "application/zip",
+							"type": "file",
+							"src": "/home/dev/data/projects/onap/cds-cnf-integration/cba-enriched.zip"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://{{bp-ip}}:{{bp-port}}/api/v1/blueprint-model",
+					"protocol": "http",
+					"host": [
+						"{{bp-ip}}"
+					],
+					"port": "{{bp-port}}",
+					"path": [
+						"api",
+						"v1",
+						"blueprint-model"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CDS Bootstrap",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"loadModelType\" : false,\r\n\"loadResourceDictionary\" : true,\r\n\"loadCBA\" : false\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/blueprint-model/bootstrap",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"blueprint-model",
+								"bootstrap"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-ONAP-RequestID",
+							"value": "b73253b6-d2be-4701-bdb2-31fa66b79a01"
+						},
+						{
+							"key": "X-ONAP-InvocationID",
+							"value": "b1a59296-fcf2-4435-b8de-9a2e9b9f4077"
+						},
+						{
+							"key": "X-ONAP-PartnerName",
+							"value": "cds-controller"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1 ; mode=block"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Workflow(action) apply-firewall-rule (Deny Traffic)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "ccsdkapps",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "ccsdkapps",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Accept-Encoding",
+						"type": "text",
+						"value": "gzip,deflate",
+						"disabled": true
+					},
+					{
+						"key": "Referer",
+						"type": "text",
+						"value": "http://84.39.39.116:30497/blueprint",
+						"disabled": true
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": "http://84.39.39.116:30497",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"actionIdentifiers\": {\n\t\t\"mode\": \"sync\",\n\t\t\"blueprintName\": \"Firewall-CNF-configuration-example\",\n\t\t\"blueprintVersion\": \"1.0.0\",\n\t\t\"actionName\": \"apply-firewall-rule\"\n\t},\n\t\"payload\": {\n\t\t\"apply-firewall-rule-request\": {\n\t\t\t\"cnf-rest-url\": \"http://vpp-agent:{{vppagent-port}}\",\n\t\t\t\"firewall_action\": \"DENY\",\n            \"traffic_destination_network\": \"10.12.0.1/32\"\n\t\t}\n\t},\n\t\"commonHeader\": {\n\t\t\"subRequestId\": \"143748f9-3cd5-4910-81c9-a4601ff2ea58\",\n\t\t\"requestId\": \"e5eb1f1e-3386-435d-b290-d49d8af8db4c\",\n\t\t\"originatorId\": \"SDNC_DG\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{bp-ip}}:{{bp-port}}/api/v1/execution-service/process",
+					"protocol": "http",
+					"host": [
+						"{{bp-ip}}"
+					],
+					"port": "{{bp-port}}",
+					"path": [
+						"api",
+						"v1",
+						"execution-service",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Workflow(action) apply-firewall-rule (Permit Traffic)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "ccsdkapps",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "ccsdkapps",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Accept-Encoding",
+						"type": "text",
+						"value": "gzip,deflate",
+						"disabled": true
+					},
+					{
+						"key": "Referer",
+						"type": "text",
+						"value": "http://84.39.39.116:30497/blueprint",
+						"disabled": true
+					},
+					{
+						"key": "Origin",
+						"type": "text",
+						"value": "http://84.39.39.116:30497",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"actionIdentifiers\": {\n\t\t\"mode\": \"sync\",\n\t\t\"blueprintName\": \"Firewall-CNF-configuration-example\",\n\t\t\"blueprintVersion\": \"1.0.0\",\n\t\t\"actionName\": \"apply-firewall-rule\"\n\t},\n\t\"payload\": {\n\t\t\"apply-firewall-rule-request\": {\n\t\t\t\"cnf-rest-url\": \"http://vpp-agent:{{vppagent-port}}\",\n\t\t\t\"firewall_action\": \"PERMIT\",\n            \"traffic_destination_network\": \"10.12.0.1/32\"\n\t\t}\n\t},\n\t\"commonHeader\": {\n\t\t\"subRequestId\": \"143748f9-3cd5-4910-81c9-a4601ff2ea58\",\n\t\t\"requestId\": \"e5eb1f1e-3386-435d-b290-d49d8af8db4c\",\n\t\t\"originatorId\": \"SDNC_DG\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{bp-ip}}:{{bp-port}}/api/v1/execution-service/process",
+					"protocol": "http",
+					"host": [
+						"{{bp-ip}}"
+					],
+					"port": "{{bp-port}}",
+					"path": [
+						"api",
+						"v1",
+						"execution-service",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CNF - VPPAgent - Get configuration",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{vppagent-ip}}:{{vppagent-port}}/configuration",
+					"protocol": "http",
+					"host": [
+						"{{vppagent-ip}}"
+					],
+					"port": "{{vppagent-port}}",
+					"path": [
+						"configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CNF - VPPAgent - Clean config",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "netallocConfig: {}\nlinuxConfig: {}\nvppConfig: {}\n"
+				},
+				"url": {
+					"raw": "http://{{vppagent-ip}}:{{vppagent-port}}/configuration?replace=true",
+					"protocol": "http",
+					"host": [
+						"{{vppagent-ip}}"
+					],
+					"port": "{{vppagent-port}}",
+					"path": [
+						"configuration"
+					],
+					"query": [
+						{
+							"key": "replace",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "bp-ip",
+			"value": "localhost"
+		},
+		{
+			"key": "bp-port",
+			"value": "8000"
+		},
+		{
+			"key": "vppagent-ip",
+			"value": "172.28.0.2"
+		},
+		{
+			"key": "vppagent-port",
+			"value": "9191"
+		}
+	]
+}

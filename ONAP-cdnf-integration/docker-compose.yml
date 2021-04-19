@@ -1,0 +1,97 @@
+version: '3.7'
+
+services:
+  cds-db: # if the service name is changed, then change also cds-bp-application.properties of cds-blueprintprocessor so it can connect to db correctly
+    container_name: cds-db
+    image: mariadb:10.5.9
+    networks:
+      - cds-network
+    ports:
+      - "3306:3306"  # standard mariaDB port
+    environment:
+      MYSQL_ROOT_PASSWORD: sdnctl
+      MYSQL_DATABASE: sdnctl
+      MYSQL_USER: sdnctl
+      MYSQL_PASSWORD: sdnctl
+      MYSQL_INITDB_SKIP_TZINFO: 1
+
+  cds-blueprintprocessor:
+    depends_on:
+      - cds-db
+    image: onap/ccsdk-blueprintsprocessor:1.1.1
+    container_name: cds-blueprintprocessor
+    hostname: cds-blueprintprocessor
+    networks:
+      - cds-network
+    ports:
+      - "8000:8080" # REST API
+      - "9112:9111" # GRPC API # DEBUG - move back all to 9111
+    volumes:
+      - ${PWD}/cds-bp-application.properties:/opt/app/onap/config/application.properties # override of default properties
+    environment:
+      APP_NAME: cds-controller
+      BUNDLEVERSION: 1.0.0
+      APP_CONFIG_HOME: /opt/app/onap/config
+      STICKYSELECTORKEY:
+      ENVCONTEXT: dev
+
+  cds-ui:
+    depends_on:
+      - cds-blueprintprocessor # UI calls REST API of cds-blueprintprocessor (->TODO: start of blueprintprocessor container is not enough, need to wait for its REST API to be ready for usage)
+    image: onap/ccsdk-cds-ui-server:1.1.1
+    container_name: cds-ui
+    ports:
+      - "3000:3000" # port for UI
+      - "9080:8080"
+      - "9081:8081"
+    environment:
+      - HOST=0.0.0.0 # host for UI
+      - API_BLUEPRINT_CONTROLLER_HTTP_BASE_URL=http://172.28.0.1:8000/api/v1
+      - API_BLUEPRINT_CONTROLLER_HTTP_AUTH_TOKEN=Basic Y2NzZGthcHBzOmNjc2RrYXBwcw==
+      - API_BLUEPRINT_PROCESSOR_HTTP_BASE_URL=http://172.28.0.1:8000/api/v1
+      - API_BLUEPRINT_PROCESSOR_HTTP_AUTH_TOKEN=Basic Y2NzZGthcHBzOmNjc2RrYXBwcw==
+      - API_BLUEPRINT_PROCESSOR_GRPC_HOST=172.28.0.1
+      - API_BLUEPRINT_PROCESSOR_GRPC_PORT=9111
+      - API_BLUEPRINT_PROCESSOR_GRPC_AUTH_TOKEN=Basic Y2NzZGthcHBzOmNjc2RrYXBwcw==
+
+  firewall-cnf:
+    container_name: firewall-cnf
+    image: 'ghcr.io/pantheontech/stonework:21.01.04'
+    privileged: true
+    networks:
+      - cds-network
+    ports:
+      - '9191:9191' # REST API
+      - '9111:9111' # GRPC # TODO remove later
+    volumes:
+      - '/tmp/vpp/:/run/vpp/'
+      - '/var/run/netns/:/var/run/netns/'
+    environment:
+      - ETCD_CONFIG=disabled # don't use ETCD (it is not needed in this case)
+    pid: host  # needed for connection between startpoint and endpoint
+    cap_add:
+      - NET_ADMIN  # needed for connection between startpoint and endpoint
+
+  startpoint:
+    container_name: startpoint
+    image: 'alpine-start-end-point:latest'
+    privileged: true
+    command: sh -c "sleep 100000s"
+    cap_add:
+      - NET_ADMIN  # needed for connection between startpoint and endpoint
+
+  endpoint:
+    container_name: endpoint
+    image: 'alpine-start-end-point:latest'
+    privileged: true
+    command: sh -c "sleep 100000s"
+    cap_add:
+      - NET_ADMIN  # needed for connection between startpoint and endpoint
+
+networks:
+  cds-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.0.0/16
