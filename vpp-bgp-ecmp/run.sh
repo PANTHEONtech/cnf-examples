@@ -2,13 +2,13 @@
 
 # Check if Docker is installed
 if ! command -v docker &> /dev/null; then
-    echo "Docker is not installed. Please install Docker and try again."
+    echo "Docker is not installed. Please install Docker (https://docs.docker.com/engine/install/) and try again."
     exit 1
 fi
 
 # Check if clab is installed
 if ! command -v clab &> /dev/null; then
-    echo "Containerlab is not installed. Please install Containerlab and try again."
+    echo "Containerlab is not installed. Please install Containerlab (https://containerlab.dev/install/) and try again."
     exit 1
 fi
 
