@@ -1,0 +1,16 @@
+configure terminal
+hostname router1
+no ipv6 forwarding
+!
+router bgp 65000
+no bgp ebgp-requires-policy
+maximum-paths 2
+bgp bestpath as-path multipath-relax
+network 192.168.11.0 mask 255.255.255.0
+network 192.168.12.0 mask 255.255.255.0
+network 192.168.13.0 mask 255.255.255.0
+neighbor 192.168.12.2 remote-as 65100
+neighbor 192.168.13.2 remote-as 65200
+!
+line vty
+!

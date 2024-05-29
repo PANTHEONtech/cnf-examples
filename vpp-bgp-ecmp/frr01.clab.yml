@@ -1,0 +1,71 @@
+name: frr01
+
+topology:
+  nodes:
+    router1:
+      kind: linux
+      image: ghcr.io/pantheontech/sonic-vpp:24.04.0 
+      binds:
+        - routers/router1/daemons:/etc/frr/daemons
+      env:
+        DPDK_DISABLE: "y" 
+        VPP_DPDK_PORTS: "eth1,eth2,eth3" 
+        SONIC_NUM_PORTS: 3
+        VPP_CONF_DB: "n"
+        NO_LINUX_NL: "y"
+      entrypoint: /bin/sh -c "sleep 10; /usr/local/bin/start_sonic.sh"
+      ports:
+          - 6379:6379
+          - 8081:8081
+    router2:
+      kind: linux
+      image: ghcr.io/pantheontech/sonic-vpp:24.04.0 
+      binds:
+        - routers/router2/daemons:/etc/frr/daemons
+      env:
+        DPDK_DISABLE: "y" 
+        VPP_DPDK_PORTS: "eth1,eth2" 
+        SONIC_NUM_PORTS: 2
+        VPP_CONF_DB: "n"
+        NO_LINUX_NL: "y"
+      entrypoint: /bin/sh -c "sleep 10; /usr/local/bin/start_sonic.sh"
+      ports:
+          - 8082:8081
+    router3:
+      kind: linux
+      image: ghcr.io/pantheontech/sonic-vpp:24.04.0 
+      binds:
+        - routers/router1/daemons:/etc/frr/daemons
+      env:
+        DPDK_DISABLE: "y" 
+        VPP_DPDK_PORTS: "eth1,eth2" 
+        SONIC_NUM_PORTS: 2
+        VPP_CONF_DB: "n"
+        NO_LINUX_NL: "y"
+      entrypoint: /bin/sh -c "sleep 10; /usr/local/bin/start_sonic.sh"
+    router4:
+      kind: linux
+      image: ghcr.io/pantheontech/sonic-vpp:24.04.0 
+      binds:
+        - routers/router1/daemons:/etc/frr/daemons
+      env:
+        DPDK_DISABLE: "y" 
+        VPP_DPDK_PORTS: "eth1,eth2,eth3" 
+        SONIC_NUM_PORTS: 3
+        VPP_CONF_DB: "n"
+        NO_LINUX_NL: "y"
+      entrypoint: /bin/sh -c "sleep 10; /usr/local/bin/start_sonic.sh"
+
+    PC1:
+      kind: linux
+      image: wbitt/network-multitool:extra
+    PC2:
+      kind: linux
+      image: wbitt/network-multitool:extra
+  links:
+    - endpoints: ["router1:eth1", "router2:eth1"]
+    - endpoints: ["router1:eth2", "router3:eth1"]
+    - endpoints: ["router2:eth2", "router4:eth1"]
+    - endpoints: ["router3:eth2", "router4:eth2"]
+    - endpoints: ["PC1:eth1", "router1:eth3"]
+    - endpoints: ["PC2:eth1", "router4:eth3"]

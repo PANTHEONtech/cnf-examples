@@ -1,0 +1,16 @@
+configure terminal
+hostname router2
+no ipv6 forwarding
+!
+router bgp 65100
+no bgp ebgp-requires-policy
+network 192.168.12.0 mask 255.255.255.0
+network 192.168.14.0 mask 255.255.255.0
+neighbor 192.168.12.1 remote-as 65000
+neighbor 192.168.14.2 remote-as 65300
+!
+line vty
+!
+
+
+
