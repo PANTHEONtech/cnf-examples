@@ -1,0 +1,8 @@
+configure terminal
+router bgp 65100
+address-family l2vpn evpn
+neighbor 10.0.1.1 activate
+advertise-all-vni
+end
+write
+exit
