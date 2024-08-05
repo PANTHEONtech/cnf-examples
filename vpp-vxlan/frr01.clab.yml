@@ -1,0 +1,43 @@
+name: frr01
+
+topology:
+  nodes:
+    router1:
+      kind: linux
+      image: ghcr.io/pantheontech/sonic-vpp:vxlan-poc-24.04.0 
+      binds:
+        - routers/router1/daemons:/etc/frr/daemons
+      env:
+        DPDK_DISABLE: "y" 
+        VPP_DPDK_PORTS: "eth1,eth2" 
+        SONIC_NUM_PORTS: 2
+        VPP_CONF_DB: "n"
+        NO_LINUX_NL: "y"
+      ports:
+          - 6379:6379
+          - 8081:8081
+    router2:
+      kind: linux
+      image: ghcr.io/pantheontech/sonic-vpp:vxlan-poc-24.04.0 
+      binds:
+        - routers/router2/daemons:/etc/frr/daemons
+      env:
+        DPDK_DISABLE: "y" 
+        VPP_DPDK_PORTS: "eth1,eth2" 
+        SONIC_NUM_PORTS: 2
+        VPP_CONF_DB: "n"
+        NO_LINUX_NL: "y"
+      ports:
+          - 8082:8081
+
+    PC1:
+      kind: linux
+      image: praqma/network-multitool:latest
+    PC2:
+      kind: linux
+      image: praqma/network-multitool:latest
+
+  links:
+    - endpoints: ["router1:eth1", "router2:eth1"]
+    - endpoints: ["PC1:eth2", "router1:eth2"]
+    - endpoints: ["PC2:eth2", "router2:eth2"]
