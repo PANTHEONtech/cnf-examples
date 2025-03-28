@@ -29,6 +29,12 @@ docker exec clab-frr01-router1 ip -d link show type vxlan
 docker exec clab-frr01-router2 ip -d link show type vxlan
 ```
 
+- Verify VXLAN Interfaces on VPP
+```bash
+docker exec -it clab-frr01-router1 vppctl show vxlan tunnel
+docker exec -it clab-frr01-router2 vppctl show vxlan tunnel 
+```
+
 - Verify EVPN Routes
 
 
