@@ -1,0 +1,21 @@
+name: sonic-vpp01
+
+topology:
+  nodes:
+    router1:
+      kind: sonic-vm
+      image: ghcr.io/pantheontech/sonic-vpp-vs:250619
+    router2:
+      kind: sonic-vm
+      image: ghcr.io/pantheontech/sonic-vpp-vs:250619
+    PC1:
+      kind: linux
+      image: wbitt/network-multitool:extra
+    PC2:
+      kind: linux
+      image: wbitt/network-multitool:extra
+
+  links:
+    - endpoints: ["router1:eth1", "router2:eth1"]
+    - endpoints: ["PC1:eth2", "router1:eth2"]
+    - endpoints: ["PC2:eth2", "router2:eth2"]

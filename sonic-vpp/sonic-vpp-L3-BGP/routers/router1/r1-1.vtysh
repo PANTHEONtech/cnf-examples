@@ -1,0 +1,12 @@
+configure terminal
+router bgp 65100
+no bgp ebgp-requires-policy
+bgp router-id 10.0.1.1
+neighbor 10.0.1.2 remote-as 65100
+address-family ipv4
+neighbor 10.0.1.2 activate
+network 10.0.1.1/30
+network 10.20.1.0/24
+end
+write
+exit
