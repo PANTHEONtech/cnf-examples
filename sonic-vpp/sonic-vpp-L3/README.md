@@ -64,10 +64,6 @@ docker exec -it clab-sonic-vpp01-PC1 iperf3 -s
 docker exec -it clab-sonic-vpp01-PC2 iperf3 -c 10.20.1.1
 ```
 
-## But why?
-
-This example demonstrates Layer 3 routing integration between SONiC and [FD.io VPP](fd.io) using a real-world, containerized CNF setup. It showcases how to extend SONiC - traditionally a hardware-centric network OS - into a software-forwarding environment using VPP as the data plane, which is highly performant, flexible, and cloud-native.
-
 # About PANTHEON.tech
 
 Do you want to [deploy SONiC](https://pantheon.tech/services/expertise/sonic-nos/) in your infrastructure? Or [orchestrate SONiC with a unique solution](https://pantheon.tech/products/sandwork/)? 
