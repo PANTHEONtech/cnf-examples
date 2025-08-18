@@ -8,7 +8,13 @@ This demo showcases L3 integration between [SONiC](https://sonicfoundation.dev/)
 - [ContainerLab](https://containerlab.dev/install/)
 - [sshpass](https://www.cyberciti.biz/faq/noninteractive-shell-script-ssh-password-provider/)
 
-To launch the example, simply execute the *run.sh* script:
+First, clone the repository so you have a local copy:
+
+```bash
+git clone https://github.com/PANTHEONtech/cnf-examples.git
+```
+
+To launch the example, simply execute the *run.sh* script within the folder you downloaded the example to:
 
 ```bash
 ./run.sh
