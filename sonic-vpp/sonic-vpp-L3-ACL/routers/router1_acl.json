@@ -1,0 +1,38 @@
+{
+    "ACL_TABLE": {
+        "BLOCK_PC1": {
+            "type": "L3",
+            "policy_desc": "Allow Web, Block Else",
+            "ports": [
+                "Ethernet4"
+            ],
+            "stage": "INGRESS"
+        }
+    },
+    "ACL_RULE": {
+        "BLOCK_PC1|RULE_1_ALLOW_HTTP": {
+            "PRIORITY": "9999",
+            "PACKET_ACTION": "FORWARD",
+            "SRC_IP": "10.20.1.1/32",
+            "DST_IP": "10.20.2.1/32",
+            "IP_PROTOCOL": "6",
+            "L4_DST_PORT": "80",
+            "L4_SRC_PORT_RANGE": "0-65535"
+        },
+        "BLOCK_PC1|RULE_2_ALLOW_IPERF": {
+            "PRIORITY": "9998",
+            "PACKET_ACTION": "FORWARD",
+            "SRC_IP": "10.20.1.1/32",
+            "DST_IP": "10.20.2.1/32",
+            "IP_PROTOCOL": "6",
+            "L4_DST_PORT": "5201",
+            "L4_SRC_PORT_RANGE": "0-65535"
+        },
+        "BLOCK_PC1|RULE_3_DROP_ALL": {
+            "PRIORITY": "1000",
+            "PACKET_ACTION": "DROP",
+            "SRC_IP": "10.20.1.1/32",
+            "DST_IP": "10.20.2.1/32"
+        }
+    }
+}
