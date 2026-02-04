@@ -60,10 +60,10 @@ docker exec clab-sonic-vpp01-PC1 ping ping -W 1 -c 5 10.20.2.1
 
 Files to inspect first
 
-```run.sh``` — orchestration and health checks
-```sonic-vpp01.clab.yml``` — topology
-```scripts/PC-interfaces.sh``` — endpoint configuration
-```scripts/acl.sh``` and ```routers/router1_acl.json``` — ACL application
+- ```run.sh``` — orchestration and health checks
+- ```sonic-vpp01.clab.yml``` — topology
+- ```scripts/PC-interfaces.sh``` — endpoint configuration
+- ```scripts/acl.sh``` and ```routers/router1_acl.json``` — ACL application
 
 
 # About PANTHEON.tech
