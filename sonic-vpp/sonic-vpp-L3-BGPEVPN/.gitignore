@@ -1,0 +1,13 @@
+# IDE specific files #
+######################
+.idea/
+
+# Sensitive files #
+##########
+*.env
+*.key
+
+# Project Build Related #
+############################
+/clab-frr01
+*.bak

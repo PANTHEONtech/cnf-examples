@@ -1,0 +1,291 @@
+{
+  "name": "sonic-vpp01",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-d5ad8d69681f",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCvoJw8K2G4ejb573+H63536JFs5UmT6Sq+Rkn+ZK+ApsKy+QJxHtbLvqh0gJ2oEoxsQ/d52EM4nBSFFpjorfjWfY8sZHL+WFwCnLUf+ZWRgprOqYIVoM79rzmXcqeMDRTprOwHn4AtoLzJq1AVHtWjKjY56b7RNQhL/h5SypnIPlBTJ9EkUwp5OpJ75s3dIYVGVD3c88uUfvqSYd6PxPFmcCmh6NCB5gnSpYhseFyj/g8UctPKhV0wW1xUUHAGoAT8lvwCvk3lBjV6FFbA7B1Rf6aZY/ZTBjB24xdnDG/PlpnKa4lsKlrZI6bgs8Uu4ZQCTJXtO7zLji+ZVDPdnpjqPJeyDLKvp3lauTn6ngw8W+5xKNbzxd3FaAQZsiB2zH2nvLoEBTLZnLhlhMtczEnKG7Q8HZBQCY2EB0g23CbvkefZVV6NDNmcBgmOnXYdNp1eVrTFsU1vSubDwAyBYfpCAuPdO2YXJgNLF2wI1Ih0ENqqPF7S3s8TCYQ+bx2rkxHRH9gWv8+X4D7lZh838wpftMTOgqxyqsgHBmSpCh6RvId26aXC0F9g5wV9Cu+HrkrL9asMz72FH7uunui4oAp8mkm2oxH+nKa5l4a9+cDXzTj4vY5+na3vKHoccSQleG6XfR6FX8mrdD3QzkQoivDLrH/ZxvMAr+0K8hDuvg9eSQ=="],
+  "nodes": {
+    "PC1": {
+      "index": "0",
+      "shortname": "PC1",
+      "longname": "clab-sonic-vpp01-PC1",
+      "fqdn": "PC1.sonic-vpp01.io",
+      "group": "",
+      "labdir": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/clab-sonic-vpp01/PC1",
+      "kind": "linux",
+      "image": "praqma/network-multitool:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d5ad8d69681f",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/clab-sonic-vpp01/PC1",
+        "clab-node-longname": "clab-sonic-vpp01-PC1",
+        "clab-node-name": "PC1",
+        "clab-node-type": "",
+        "clab-owner": "mm",
+        "clab-topo-file": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/sonic-vpp01.clab.yml",
+        "containerlab": "sonic-vpp01"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "PC2": {
+      "index": "1",
+      "shortname": "PC2",
+      "longname": "clab-sonic-vpp01-PC2",
+      "fqdn": "PC2.sonic-vpp01.io",
+      "group": "",
+      "labdir": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/clab-sonic-vpp01/PC2",
+      "kind": "linux",
+      "image": "praqma/network-multitool:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d5ad8d69681f",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/clab-sonic-vpp01/PC2",
+        "clab-node-longname": "clab-sonic-vpp01-PC2",
+        "clab-node-name": "PC2",
+        "clab-node-type": "",
+        "clab-owner": "mm",
+        "clab-topo-file": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/sonic-vpp01.clab.yml",
+        "containerlab": "sonic-vpp01"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 11443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 1180,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "router1": {
+      "index": "2",
+      "shortname": "router1",
+      "longname": "clab-sonic-vpp01-router1",
+      "fqdn": "router1.sonic-vpp01.io",
+      "group": "",
+      "labdir": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/clab-sonic-vpp01/router1",
+      "kind": "sonic-vm",
+      "image": "ghcr.io/pantheontech/sonic-vpp-vs:vxlan-poc-260225",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d5ad8d69681f",
+        "clab-node-group": "",
+        "clab-node-kind": "sonic-vm",
+        "clab-node-lab-dir": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/clab-sonic-vpp01/router1",
+        "clab-node-longname": "clab-sonic-vpp01-router1",
+        "clab-node-name": "router1",
+        "clab-node-type": "",
+        "clab-owner": "mm",
+        "clab-topo-file": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/sonic-vpp01.clab.yml",
+        "containerlab": "sonic-vpp01"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 5000,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 8080,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "router2": {
+      "index": "3",
+      "shortname": "router2",
+      "longname": "clab-sonic-vpp01-router2",
+      "fqdn": "router2.sonic-vpp01.io",
+      "group": "",
+      "labdir": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/clab-sonic-vpp01/router2",
+      "kind": "sonic-vm",
+      "image": "ghcr.io/pantheontech/sonic-vpp-vs:vxlan-poc-260225",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-d5ad8d69681f",
+        "clab-node-group": "",
+        "clab-node-kind": "sonic-vm",
+        "clab-node-lab-dir": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/clab-sonic-vpp01/router2",
+        "clab-node-longname": "clab-sonic-vpp01-router2",
+        "clab-node-name": "router2",
+        "clab-node-type": "",
+        "clab-owner": "mm",
+        "clab-topo-file": "/home/mm/workspace/github/PANTHEONtech/cnf-examples/sonic-vpp/sonic-vpp-L3-BGPEVPN/sonic-vpp01.clab.yml",
+        "containerlab": "sonic-vpp01"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 443,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 5000,
+          "protocol": "tcp"
+        },
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 8080,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "router1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:3d:f5:61",
+          "peer": "z"
+        },
+        "z": {
+          "node": "router2",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:e9:35:be",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "PC1",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:78:40:6d",
+          "peer": "z"
+        },
+        "z": {
+          "node": "router1",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:04:fa:77",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "PC2",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:eb:6d:3f",
+          "peer": "z"
+        },
+        "z": {
+          "node": "router2",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:92:9d:56",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}
