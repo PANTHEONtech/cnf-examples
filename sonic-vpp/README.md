@@ -1,6 +1,8 @@
 # SONiC-VPP Examples
 
-This repository contains a collection of examples and deployment scenarios for **SONiC-VPP**, demonstrating how to leverage the power of a [VPP-based data plane](https://pantheon.tech/services/expertise/fdio-vector-packet-processing-vpp/) within the [SONiC](https://pantheon.tech/services/expertise/sonic-nos/) ecosystem.
+A simplified way to experience SONiC-VPP firsthand. 
+
+These examples are designed to let you start a variety of SONiC-VPP examples with ease, eliminating the need to compile the entire project yourself.
 
 ## What is SONiC-VPP?
 
