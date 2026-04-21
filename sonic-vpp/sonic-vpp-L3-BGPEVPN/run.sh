@@ -42,7 +42,7 @@ for ((i=1; i<=MAX_RETRIES; i++)); do
     echo "Attempt $i of $MAX_RETRIES..."
 
     # Run the containerlab inspect and count 'healthy' statuses
-    HEALTHY_COUNT=$(clab inspect -f json | grep -o '"status": *"healthy"' | wc -l)
+    HEALTHY_COUNT=$(clab inspect --topo sonic-vpp01.clab.yml -f json | grep -o '"status": *"healthy"' | wc -l)
 
     if [ "$HEALTHY_COUNT" -ge "$TARGET_HEALTHY_COUNT" ]; then
         echo "Success: $HEALTHY_COUNT nodes are healthy. Continuing..."
