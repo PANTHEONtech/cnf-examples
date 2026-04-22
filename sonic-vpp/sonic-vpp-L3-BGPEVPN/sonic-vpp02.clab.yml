@@ -1,0 +1,32 @@
+name: sonic-vpp02
+
+topology:
+  nodes:
+    router1:
+      kind: sonic-vm
+      image: ghcr.io/pantheontech/sonic-vpp-vs:vxlan-poc-260421
+    router2:
+      kind: sonic-vm
+      image: ghcr.io/pantheontech/sonic-vpp-vs:vxlan-poc-260421
+    PC1:
+      kind: linux
+      image: praqma/network-multitool:latest
+    PC2:
+      kind: linux
+      image: praqma/network-multitool:latest
+    PC3:
+      kind: linux
+      image: praqma/network-multitool:latest
+    PC4:
+      kind: linux
+      image: praqma/network-multitool:latest
+
+  links:
+    # Router-to-router underlay (Ethernet0 on both)
+    - endpoints: ["router1:eth1", "router2:eth1"]
+    # VLAN 100 / VNI 1000: PC1 on R1, PC2 on R2
+    - endpoints: ["PC1:eth2", "router1:eth2"]
+    - endpoints: ["PC2:eth2", "router2:eth2"]
+    # VLAN 200 / VNI 2000: PC3 on R1, PC4 on R2
+    - endpoints: ["PC3:eth2", "router1:eth3"]
+    - endpoints: ["PC4:eth2", "router2:eth3"]

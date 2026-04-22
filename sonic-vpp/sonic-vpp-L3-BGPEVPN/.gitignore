@@ -9,5 +9,5 @@
 
 # Project Build Related #
 ############################
-/clab-frr01
+/clab-*
 *.bak
