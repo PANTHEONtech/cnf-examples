@@ -53,7 +53,7 @@ docker exec -it clab-sonic-vpp01-PC1 iperf3 -c 10.20.2.1
 5. Any other traffic from PC1 is dropped by the ACL rule on router1:
 
 ```bash
-docker exec clab-sonic-vpp01-PC1 ping ping -W 1 -c 5 10.20.2.1
+docker exec clab-sonic-vpp01-PC1 ping -W 1 -c 5 10.20.2.1
 ```
 
 ## Notes and tips
