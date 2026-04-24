@@ -1,13 +1,10 @@
-# IDE specific files #
-######################
+# ContainerLab runtime state
+/clab-*
+
+# Backups and editor junk
+*.bak
 .idea/
 
-# Sensitive files #
-##########
+# Sensitive files
 *.env
 *.key
-
-# Project Build Related #
-############################
-/clab-*
-*.bak
