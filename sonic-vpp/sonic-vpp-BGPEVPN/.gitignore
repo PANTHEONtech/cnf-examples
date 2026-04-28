@@ -1,0 +1,10 @@
+# ContainerLab runtime state
+/clab-*
+
+# Backups and editor junk
+*.bak
+.idea/
+
+# Sensitive files
+*.env
+*.key

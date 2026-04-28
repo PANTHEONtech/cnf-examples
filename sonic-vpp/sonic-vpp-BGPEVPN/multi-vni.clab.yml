@@ -1,4 +1,4 @@
-name: sonic-vpp02
+name: sonic-vpp-multi-vni
 
 topology:
   nodes:
